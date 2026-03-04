@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Каталог - AnimeBash{% endblock %}
+
+{% block content %}
+<h2 class="text-3xl font-bold mb-6 text-gray-800 border-b-2 border-indigo-500 pb-2">Каталог Аніме</h2>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    {% for anime in animes %}
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
+            <img src="{{ anime.image }}" alt="{{ anime.title }}" class="w-full h-48 object-cover bg-gray-200">
+            <div class="p-4">
+                <h3 class="font-bold text-xl mb-2 text-indigo-700">{{ anime.title }}</h3>
+                <p class="text-gray-600 text-sm mb-1"><strong>Жанр:</strong> {{ anime.genre }}</p>
+                <p class="text-gray-600 text-sm"><strong>Епізодів:</strong> {{ anime.episodes }}</p>
+                <button class="mt-4 bg-indigo-600 hover:bg-indigo-800 text-white font-bold py-2 px-4 rounded w-full transition-colors">
+                    Дивитися
+                </button>
+            </div>
+        </div>
+    {% else %}
+        <p class="text-gray-500">Аніме не знайдено.</p>
+    {% endfor %}
+</div>
+{% endblock %}
